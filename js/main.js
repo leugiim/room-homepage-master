@@ -9,6 +9,12 @@ window.onload = function() {
   const descriptions = document.querySelectorAll("[" + selectorSlides + "]");
   const buttons = document.querySelectorAll("[" + selectorButtons + "]");
 
+  console.log(images);
+  console.log("---");
+  console.log(descriptions);
+  console.log("---");
+  console.log(buttons);
+
   const setVisibility = (element, selector) => {
     if (parseInt(element.getAttribute(selector)) !== activeIndex) 
       element.classList.add("hidden");
