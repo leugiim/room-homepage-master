@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">  
   <title>Frontend Mentor | Room homepage</title>
   <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@500;600;700&display=swap" rel="stylesheet">
@@ -14,6 +14,7 @@
 
     <header class="header">
       <img src="./images/logo.svg" title="Room logo" />
+      <button class="menu-icon hidden-xl" data-menu></button>
       <ul>
         <li><a href="#">Home</a></li>    
         <li><a href="#">Shop</a></li>        
@@ -24,10 +25,15 @@
 
     <section class="slider">
       <div class="slide">
-        <div class="slide-left">
+        <div class="slide-left hidden-sm">
           <img src="./images/desktop-image-hero-1.jpg" data-img-slide="0" title="Slider image 1" />
           <img src="./images/desktop-image-hero-2.jpg" data-img-slide="1" title="Slider image 2" />
           <img src="./images/desktop-image-hero-3.jpg" data-img-slide="2" title="Slider image 3" />
+        </div>
+        <div class="slide-mobile-images hidden-xl">
+          <img src="./images/mobile-image-hero-1.jpg" data-mobile-img-slide="0" title="Slider image 1" />
+          <img src="./images/mobile-image-hero-2.jpg" data-mobile-img-slide="1" title="Slider image 2" />
+          <img src="./images/mobile-image-hero-3.jpg" data-mobile-img-slide="2" title="Slider image 3" />
         </div>
         <div class="slide-right">
           <div class="slide-description" data-slide="0">
@@ -66,7 +72,8 @@
     </section>
 
     <section class="about">
-      <img src="./images/image-about-dark.jpg" title="Image about dark" />
+      <img class="about-dark" src="./images/image-about-dark.jpg" title="Image about dark" />
+      <img class="about-light" src="./images/image-about-light.jpg" title="Image about light" />      
       <div class="about-description">
         <h2 class="lead">About our furniture</h2>
         <p>
@@ -75,13 +82,13 @@
           inspires you. Find the furniture pieces you need, from traditional to contemporary styles
           or anything in between. Product specialists are available to help you create your dream space.
         </p>
-        <div class="attribution">
-          Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-          Coded by <a href="#">Miguel Rodríguez López</a>.
-        </div>
       </div>
-      <img src="./images/image-about-light.jpg" title="Image about light" />      
     </section>
+    
+    <footer class="footer">
+      <span>Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.</span>
+      <span>Coded by <a href="#">Miguel Rodríguez López</a>.</span>
+    </footer>
 
   </div>
 
