@@ -287,7 +287,6 @@ p {
   .about {
     display: block;
     position: inherit;
-    //grid-gap: 0px;
     height: auto;
 
     img {
@@ -350,6 +349,7 @@ p {
       display: none;
     }
   }
+
   .header.open {
     background-color: $white;
 
@@ -366,6 +366,10 @@ p {
       width: 100%;
       text-align: right;
       display: block;
+    }
+    
+    ul li a:after {
+      background: $black;
     }
   }
 

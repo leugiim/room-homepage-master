@@ -304,6 +304,9 @@ p {
     text-align: right;
     display: block;
   }
+  .header.open ul li a:after {
+    background: black;
+  }
 
   .about {
     flex-direction: column;
