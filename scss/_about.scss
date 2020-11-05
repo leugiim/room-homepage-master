@@ -24,12 +24,12 @@
     justify-content: center;
     padding: 0 50px;
     order: 1;
-
-    .lead {
-      letter-spacing: 5px;
-      font-size: $font-size;
-      margin-bottom: 16px;
-    }
+  }
+  
+  &__title {
+    letter-spacing: 5px;
+    font-size: $font-size;
+    margin-bottom: 16px;
   }
 
   @media (max-width: $mediaquery-tablet) {
