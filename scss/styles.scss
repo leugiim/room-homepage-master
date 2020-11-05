@@ -14,14 +14,16 @@ $height-slider: 67vh;
 $height-about: 33vh;
 $arrow-size: 80px;
 
-// globals
+$mediaquery-tablet: 1399px;
+$mediaquery-mobile: 767px;
+
 * {
   margin: 0;
   padding: 0;
 }
 
 .hidden,
-.hidden-xl {
+.hidden--xl {
   display: none !important;
 }
 
@@ -30,6 +32,11 @@ a:hover {
   text-decoration: none;
   background-color: none;
   color: inherit;
+}
+a, button {
+  &:active, &:focus {
+    outline:none;
+  }
 }
 
 img {
@@ -52,351 +59,18 @@ p {
   font-size: $font-size;
 }
 
-// header
-.header {
-  display: flex;
-  justify-content: left;
-  align-items: center;
-  padding: 60px;
-  color: $white;
-  z-index: 9;
-  position: absolute;
-
-  img {
-    height: 20px;
-    margin-right: 25px;
-  }
-
-  ul {
-    text-transform: lowercase;
-    text-decoration: none;
-    list-style: none;
-    font-weight: 600;
-
-    li {
-      display: inline;
-      margin-left: 30px;
-
-      a {
-        position: relative;
-      }
-
-      a:after {
-        position: absolute;
-        content: "";
-        top: 100%;
-        left: 0;
-        width: 100%;
-        height: 2px;
-        background: $white;
-        transform: scaleX(0);
-        transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-      }
-      a:hover::after,
-      .active::after {
-        transform: scaleX(1);
-      }
+@media (max-width: $mediaquery-mobile) {
+  .hidden{
+    &--sm {
+      display: none !important;
+    }
+    &--xl {
+      display: inherit !important;
     }
   }
 }
 
-// slider
-.slider {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-
-  .slide {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-
-    .slide-left,
-    .slide-right,
-    img {
-      height: $height-slider;
-    }
-
-    .slide-right {
-      position: relative;
-      height: $height-slider;
-
-      .slide-description {
-        position: relative;
-        padding: 110px 95px 60px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        box-sizing: border-box;
-        height: calc(#{$height-slider} - #{$arrow-size});
-
-        h1 {
-          font-size: 2.2rem;
-          font-weight: 600;
-          color: $black;
-        }
-
-        .lead {
-          letter-spacing: 12px;
-          font-weight: 600;
-        }
-        .lead:after {
-          content: "";
-          background-image: url("../images/icon-arrow.svg");
-          width: 40px;
-          height: 12px;
-          margin-left: 30px;
-          display: inline-block;
-        }
-      }
-
-      .slider-arrows {
-        position: relative;
-        bottom: 0;
-        left: 0;
-        //margin-top: -$arrow-size;
-
-        button {
-          width: $arrow-size;
-          height: $arrow-size;
-          margin: 0;
-          padding: 0;
-          background: $black;
-          border: 0;
-          box-shadow: none;
-          border-radius: 0px;
-          cursor: pointer;
-        }
-        button:hover {
-          background-color: $very-dark-gray;
-        }
-
-        .arrow-left {
-          background: url("../images/icon-angle-left.svg") no-repeat center
-            center $black;
-        }
-        .arrow-right {
-          background: url("../images/icon-angle-right.svg") no-repeat center
-            center $black;
-        }
-      }
-    }
-  }
-}
-
-// about
-.about {
-  position: absolute;
-  top: $height-slider;
-  left: 0;
-  right: 0;
-  height: $height-about;
-  display: flex;
-
-  img {
-    height: $height-about;
-  }
-
-  .about-dark {
-    order: 0;
-  }
-
-  .about-light {
-    order: 2;
-  }
-
-  .about-description {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 50px;
-    order: 1;
-
-    .lead {
-      letter-spacing: 5px;
-      font-size: $font-size;
-      margin-bottom: 16px;
-    }
-  }
-}
-
-// footer
-.footer {
-  position: absolute;
-  bottom: 0;
-  color: $dark-gray;
-  text-align: center;
-  width: 100%;
-
-  a {
-    color: hsl(228, 45%, 44%);
-  }
-  span {
-    display: block;
-  }
-}
-
-@media (max-width: 1399px) {
-  // slider
-  .slider {
-    position: inherit;
-    height: auto;
-    width: 100%;
-
-    .slide {
-      flex-direction: column;
-      width: 100%;
-
-      .slide-mobile-images,
-      .slide-left,
-      .slide-right,
-      img {
-        height: auto;
-        width: 100%;
-      }
-      .slide-right {
-        display: flex;
-        flex-direction: column-reverse;
-
-        .slide-description {
-          height: auto;
-          padding: 80px 40px;
-
-          h1 {
-            font-size: 1.75rem;
-          }
-
-          p {
-            margin: 20px 0 60px;
-          }
-        }
-        .slider-arrows {
-          bottom: inherit;
-          left: inherit;
-          text-align: right;
-          right: 0;
-          top: 0;
-          margin-top: -$arrow-size;
-        }
-      }
-    }
-  }
-
-  // about
-  .about {
-    display: block;
-    position: inherit;
-    height: auto;
-
-    img {
-      width: 50%;
-      height: auto;
-      float: left;
-    }
-
-    .about-description {
-      padding: 40px 40px 80px;
-    }
-  }
-
-  // footer
-  .footer {
-    position: inherit;
-    margin-top: -30px;
-  }
-}
-
-@media (max-width: 767px) {
-  // globals
-  .hidden-sm {
-    display: none !important;
-  }
-  .hidden-xl {
-    display: inherit !important;
-  }
-
-  // header
-  .header {
-    width: 100vw;
-    color: $black;
-    z-index: 9;
-    box-sizing: border-box;
-    padding: 25px;
-
-    img {
-      margin: 0 auto;
-      order: 1;
-    }
-
-    button {
-      order: 0;
-      width: 40px;
-      height: 40px;
-      margin: 0;
-      padding: 0;
-      background: transparent;
-      border: 0;
-      box-shadow: none;
-      border-radius: 0px;
-      cursor: pointer;
-      background: url("../images/icon-hamburger.svg") no-repeat center center
-        transparent;
-    }
-
-    ul {
-      order: 2;
-      display: none;
-    }
-  }
-
-  .header.open {
-    background-color: $white;
-
-    img {
-      display: none;
-    }
-
-    button {
-      background: url("../images/icon-close.svg") no-repeat center center
-        transparent;
-    }
-
-    ul {
-      width: 100%;
-      text-align: right;
-      display: block;
-    }
-    
-    ul li a:after {
-      background: $black;
-    }
-  }
-
-  // about
-  .about {
-    flex-direction: column;
-    display: flex;
-
-    img {
-      height: auto;
-      width: 100%;
-    }
-
-    .about-description {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 80px 40px;
-    }
-  }
-
-  // footer
-  .footer {
-    position: inherit;
-    padding: 20px 40px;
-    text-align: left;
-    box-sizing: border-box;
-    margin-top: 0;
-  }
-}
+@import './_header.scss';
+@import './_slider.scss';
+@import './_about.scss';
+@import './_footer.scss';

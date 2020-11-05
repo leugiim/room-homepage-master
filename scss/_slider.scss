@@ -1,0 +1,142 @@
+.slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  .slide {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    &__left,
+    &__right,
+    &__image {
+      height: $height-slider;
+    }
+
+    &__right {
+      position: relative;
+      height: $height-slider;      
+    }    
+
+    &__description {
+      position: relative;
+      padding: 110px 95px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      box-sizing: border-box;
+      height: calc(#{$height-slider} - #{$arrow-size});
+    }
+
+    &__h1 {
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: $black;
+    }
+
+    &__link {
+      letter-spacing: 12px;
+      font-weight: 600;
+      
+      &:after {
+        content: "";
+        background-image: url("../images/icon-arrow.svg");
+        width: 40px;
+        height: 12px;
+        margin-left: 30px;
+        display: inline-block;
+      }
+
+      &:hover {
+        color: $dark-gray;
+      }
+      &:hover:after {
+        background-image: url("../images/icon-arrow-gray.svg");
+      }
+    }
+  }
+
+  &__arrows {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    //margin-top: -$arrow-size;
+
+    @mixin arrow-slider (){
+      width: $arrow-size;
+      height: $arrow-size;
+      margin: 0;
+      padding: 0;
+      background: $black;
+      border: 0;
+      box-shadow: none;
+      border-radius: 0px;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $very-dark-gray;
+      }
+    }
+
+    .arrow {
+      &--left {
+        @include arrow-slider();
+        background: url("../images/icon-angle-left.svg") no-repeat center
+          center $black;
+      }
+      &--right {
+        @include arrow-slider();
+        background: url("../images/icon-angle-right.svg") no-repeat center
+          center $black;
+      }
+    }
+  }
+
+  @media (max-width: $mediaquery-tablet) {
+    position: inherit;
+    height: auto;
+    width: 100%;
+
+    .slide {
+      flex-direction: column;
+      width: 100%;
+
+      &__mobile-images,
+      &__left,
+      &__right,
+      &__image {
+        height: auto;
+        width: 100%;
+      }
+
+      &__right {
+        display: flex;
+        flex-direction: column-reverse;        
+      }
+
+      &__description {
+        height: auto;
+        padding: 80px 40px;        
+      }      
+
+      &__h1 {
+        font-size: 1.75rem;
+      }
+      
+      &__text {
+        margin: 20px 0 60px;
+      }
+    }
+    
+    &__arrows {
+      bottom: inherit;
+      left: inherit;
+      text-align: right;
+      right: 0;
+      top: 0;
+      margin-top: -$arrow-size;
+    }
+  }
+}
